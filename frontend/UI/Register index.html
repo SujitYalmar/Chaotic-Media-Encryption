@@ -1,0 +1,72 @@
+<html>
+ <head>
+  <title>
+   Create an EncryptX Account
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function redirect() {
+        window.location.href = "Sign in index.html";
+    }
+  </script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="left">
+    <div class="logo">
+     <img alt="Logo" height="40" src="Encrypt logo.jpg" width="40"/>
+     <span>
+      EncryptX
+     </span>
+    </div>
+    <h1>
+     Create an EncryptX account
+    </h1>
+    <p>
+     Let's get started!
+    </p>
+    <form>
+     <label for="name">
+      Name
+     </label>
+     <input id="name" name="name" type="text" />
+     <label for="email">
+      Email
+     </label>
+     <input id="email" name="email" type="email" />
+     <label for="password">
+      Password
+     </label>
+     <div class="password-container">
+      <input id="password" name="password" type="password" />
+      <i class="fas fa-eye">
+      </i>
+     </div>
+     <button class="signup-btn" type="button" onclick="redirect()">
+      Register
+     </button>
+     
+     <button onclick="document.location='Sign in index.html'">
+      Continue with email
+     </button>
+    </form>
+    <div class="login-link">
+     <p>
+      Already have an account?
+      <a href="#">
+       Log in
+      </a>
+     </p>
+    </div>
+   </div>
+   <div class="right">
+   </div>
+  </div>
+  <!--<script>
+    function redirect() {
+        window.location.href = "Sign in index.html";  // The URL or path to the second page
+    }
+</script>-->
+ </body>
+</html>
