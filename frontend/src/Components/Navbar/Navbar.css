@@ -19,8 +19,13 @@ nav ul li{
     list-style-type: none;
     margin: 5px 20px;
     font-size: 16px;
+<<<<<<< HEAD
     cursor: pointer;
     user-select: none; 
+=======
+    user-select: none;  
+    cursor: pointer;   
+>>>>>>> 21f27258e6d32680f7d4053a64afc4380af40557
 }
 .dark-nav{
     background: #212EA0;
