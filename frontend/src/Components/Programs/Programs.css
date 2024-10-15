@@ -9,10 +9,15 @@
     width: 100%;
     border-radius: 10px;
     display: block;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    user-select: none;
 }
 .program{
     flex-basis: 31%;
     position: relative;
+    margin-top: 5px;
+    margin-bottom: 25px;
 }
 .caption{
     border-radius: 10px;

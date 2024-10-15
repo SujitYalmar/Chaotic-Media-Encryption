@@ -9,16 +9,18 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 10;
+    z-index: 10;  
 }
 .logo{
     width: 180px;
 }
 nav ul li{
     display: inline-block;
-    list-style: none;
+    list-style-type: none;
     margin: 5px 20px;
     font-size: 16px;
+    cursor: pointer;
+    user-select: none; 
 }
 .dark-nav{
     background: #212EA0;
@@ -62,6 +64,10 @@ nav ul li{
         cursor: pointer;
     }
     .hide-mobile-menu{
+        cursor: pointer;
         right: -200px;
     }
+    .hide-mobile-menu:hover{
+        background-color: bisque;
+      }
 }

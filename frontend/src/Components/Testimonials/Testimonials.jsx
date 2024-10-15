@@ -34,37 +34,13 @@ const slideBackward = ()=>{
             <li>
                 <div className="slide">
                     <div className="user-info">
-                        <img src={user_1} alt="" />
-                        <div>
-                            <h3>Emily Williams</h3>
-                            <span>Edusity, USA</span>
-                        </div>
-                    </div>
-                    <p>Choosing to pursue my degree at Edusity was one of the best decisions I've ever made. The supportive community, state-of-the-art facilities, and commitment to academic excellence have truly exceeded my expectations.</p>
-                </div>
-            </li>
-            <li>
-                <div className="slide">
-                    <div className="user-info">
                         <img src={user_2} alt="" />
                         <div>
-                            <h3>William Jackson</h3>
-                            <span>Edusity, USA</span>
+                            <h3>Nihal Khan</h3>
+                            <span>EncryptX, IN</span>
                         </div>
                     </div>
-                    <p>Choosing to pursue my degree at Edusity was one of the best decisions I've ever made. The supportive community, state-of-the-art facilities, and commitment to academic excellence have truly exceeded my expectations.</p>
-                </div>
-            </li>
-            <li>
-                <div className="slide">
-                    <div className="user-info">
-                        <img src={user_3} alt="" />
-                        <div>
-                            <h3>Emily Williams</h3>
-                            <span>Edusity, USA</span>
-                        </div>
-                    </div>
-                    <p>Choosing to pursue my degree at Edusity was one of the best decisions I've ever made. The supportive community, state-of-the-art facilities, and commitment to academic excellence have truly exceeded my expectations.</p>
+                    <p>"EncryptX made transferring my files so easy and secure! The encryption feature is a lifesaver, and the upload speed is impressive. Definitely my go-to for file transfers."</p>
                 </div>
             </li>
             <li>
@@ -72,11 +48,35 @@ const slideBackward = ()=>{
                     <div className="user-info">
                         <img src={user_4} alt="" />
                         <div>
-                            <h3>William Jackson</h3>
-                            <span>Edusity, USA</span>
+                            <h3>Adesh Bhumkar</h3>
+                            <span>EncrytX, IN</span>
                         </div>
                     </div>
-                    <p>Choosing to pursue my degree at Edusity was one of the best decisions I've ever made. The supportive community, state-of-the-art facilities, and commitment to academic excellence have truly exceeded my expectations.</p>
+                    <p>"I love how simple EncryptX is to use. It took only a few minutes to transfer my media, and I felt confident knowing everything was encrypted. Great experience!"</p>
+                </div>
+            </li>
+            <li>
+                <div className="slide">
+                    <div className="user-info">
+                        <img src={user_2} alt="" />
+                        <div>
+                            <h3>Om Pimple</h3>
+                            <span>EncrytX, IN</span>
+                        </div>
+                    </div>
+                    <p>"Fast, reliable, and secure! EncryptX is perfect for large file transfers. The interface is clean and easy to navigate, even for non-tech users."</p>
+                </div>
+            </li>
+            <li>
+                <div className="slide">
+                    <div className="user-info">
+                        <img src={user_4} alt="" />
+                        <div>
+                            <h3>Siddhesh Ghule</h3>
+                            <span>EncrytX, IN</span>
+                        </div>
+                    </div>
+                    <p>"EncryptX combines speed with top-notch security. The encryption process is seamless, and I had no issues with transferring large media files. Highly recommended!"</p>
                 </div>
             </li>
         </ul>
