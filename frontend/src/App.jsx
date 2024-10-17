@@ -19,7 +19,7 @@ const App = () => {
      <Hero/>
      <div className="container">
       
-        <Title subTitle='Our PROGRAM' title='How to send and share large files with EncryptX?'/>
+        <Title subTitle='Our PROGRAM' title='Our feature'/>
         <Programs/>
   
         <About setPlayState={setPlayState}/>
