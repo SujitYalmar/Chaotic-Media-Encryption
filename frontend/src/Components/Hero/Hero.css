@@ -8,6 +8,8 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    user-select: none;  
+    cursor: pointer;
 }
 .hero-text{   
     text-align: center;
@@ -22,6 +24,29 @@
     margin: 10px auto 20px;
     line-height: 1.4;
 }
+.button{
+    margin-inline-end: 20px;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #3c4d95;
+    border: none;
+    border-radius: 15px;
+    user-select: none;  
+    cursor: pointer;
+  } 
+  .button:hover {background-color: #d12421}
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 /* ---------- media query --------- */
 
 @media (max-width: 850px){

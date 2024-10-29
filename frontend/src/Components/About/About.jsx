@@ -15,7 +15,7 @@ const About = ({setPlayState}) => {
         <h2>Fast, Secure, and Reliable File Sharing</h2>
         <p>Welcome to EncryptX, your reliable solution for fast and secure data transfers. We make moving your files between devices, platforms, and people easy and efficient.</p>
         <p>In today’s fast-paced digital world, transferring large files can be slow and cumbersome, often involving complex tools or risking data breaches. EncryptX is designed to solve these problems, providing a seamless, safe, and user-friendly way to transfer data.</p>
-        <p>Whether you’re a business professional or an everyday user, EncryptX is here to help you move your files with confidence. Ready to simplify your file transfers? Start sharing with EncryptX today and experience the difference.</p>
+        <p>Whether you’re a business professional or an everyday user, EncryptX is here to help you move your files with confidence. Ready to simplify your file transfers? Start sharing with EncryptX today and experience the difference.</p> 
       </div>
     </div>
   )

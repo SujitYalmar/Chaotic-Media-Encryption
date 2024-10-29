@@ -8,8 +8,12 @@ const Hero = () => {
       <div className="hero-text">
         <h1>Secure Media Transfer with Advanced Encryption</h1>
         <p>Our encryption services ensure that your media files are securely transferred and protected from unauthorized access. With cutting-edge technology, we provide peace of mind for all your media transfer needs.</p>
-        <button className='btn'>Sender<img src={dark_arrow} alt="" /></button>
-        <button className='btn'>Reciever<img src={dark_arrow} alt="" /></button>
+        <button className='button'>Encrypt</button>
+        <button className='button'>Decrypt</button>
+        {/* <footer className="button">
+          <button className="button">Send</button>
+          <button className="button">Receive</button>
+        </footer> */}
       </div>
     </div>
   )

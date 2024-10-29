@@ -1,9 +1,11 @@
 .about{
-    margin: 100px auto;
+    margin: 195px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 90%;
+    user-select: none;  
+    cursor: pointer;
 }
 .about-left{
     flex-basis: 40%;
@@ -17,6 +19,7 @@
     border-radius: 10px;
 }
 .play-icon{
+    margin-top: 20px;
     width: 60px;
     position: absolute;
     top: 50%;

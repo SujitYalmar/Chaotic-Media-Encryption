@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chaotic Media Encryption</title>
+</head>
+<body>
+    <h1>Chaotic Media Encryption</h1>
+    
+    <!-- Form for Encrypting and Sending a File -->
+    <h2>Encrypt and Send a File</h2>
+	<form id="encryptForm" action="/file/encryptAndSendFile" method="post" enctype="multipart/form-data">
+        <label for="file">Choose file to encrypt:</label>
+        <input type="file" name="file" required>
+        <br><br>
+        
+        <label for="key">Enter encryption key:</label>
+        <input type="text" name="key" placeholder="Enter encryption key" required>
+        <br><br>
+        
+        <label for="email">Recipient Email:</label>
+        <input type="email" name="email" placeholder="Enter recipient email" required>
+        <br><br>
+        
+        <button type="submit">Encrypt & Send</button>
+    </form>
+    
+    <br><hr><br>
+    
+    <!-- Form for Decrypting a File -->
+    <h2>Decrypt a File</h2>
+	<form id="decryptForm" action="/file/decryptFile" method="post" enctype="multipart/form-data">
+        <label for="file">Choose file to decrypt:</label>
+        <input type="file" name="file" required>
+        <br><br>
+        
+        <label for="key">Enter decryption key:</label>
+        <input type="text" name="key" placeholder="Enter decryption key" required>
+        <br><br>
+        
+        <button type="submit">Decrypt File</button>
+    </form>
+
+</body>
+</html>
