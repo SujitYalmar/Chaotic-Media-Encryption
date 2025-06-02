@@ -16,8 +16,15 @@ const FileDecrypt = () => {
     };
 
     return (
-        <div className="container">
+        <div className="decrypt-container">
             <div className="login-form">
+                <button
+                    type="button"
+                    className="back-btn"
+                    onClick={() => window.history.back()}
+                >
+                    &#8592; Back
+                </button>
                 <h2>Decrypt a File</h2>
                 
                 <form onSubmit={handleSubmit}>

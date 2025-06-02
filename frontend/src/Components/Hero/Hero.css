@@ -65,3 +65,35 @@
         margin: 15px auto 30px;
     }
 }
+
+/* Encrypt and Decrypt button styles */
+.hero-action-btn {
+    display: inline-block;
+    min-width: 140px;
+    margin: 0 12px;
+    padding: 14px 28px;
+    font-size: 22px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(60,77,149,0.08);
+    letter-spacing: 1px;
+}
+
+.hero-action-btn.encrypt {
+    background: linear-gradient(90deg, #3c4d95 60%, #4e8cff 100%);
+    color: #fff;
+}
+
+.hero-action-btn.decrypt {
+    background: linear-gradient(90deg, #d12421 60%, #ff6b6b 100%);
+    color: #fff;
+}
+
+.hero-action-btn:hover {
+    box-shadow: 0 4px 16px rgba(60,77,149,0.18);
+    opacity: 0.93;
+    transform: translateY(-2px) scale(1.03);
+}
