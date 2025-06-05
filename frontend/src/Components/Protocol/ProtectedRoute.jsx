@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   if (isLoading) return <div>Loading...</div>;
 
   if (!isAuthenticated) {
-    loginWithRedirect();
+    loginWithRedirect({ screen_hint: "signup" });
     return null;
   }
 

@@ -26,19 +26,29 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`container ${sticky ? 'dark-nav' : ''}`}>
+        <nav className={`container ${sticky ? 'dark-nav' : ''}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <img src={logo} alt="Logo" className='logo' />
-            <ul className={mobileMenu ? '' : 'hide-mobile-menu'}>
+            <ul
+                className={mobileMenu ? '' : 'hide-mobile-menu'}
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '24px',
+                    margin: 0,
+                    padding: 0,
+                    listStyle: 'none'
+                }}
+            >
                 <li><Link to='hero' smooth={true} offset={0} duration={500}>Home</Link></li>
                 <li><Link to='program' smooth={true} offset={-260} duration={500}>Feature</Link></li>
                 <li><Link to='about' smooth={true} offset={-150} duration={500}>About us</Link></li>
                 <li><Link to='testimonials' smooth={true} offset={-260} duration={500}>Feedback</Link></li>
                 <li><Link to='contact' smooth={true} offset={-260} duration={500}>Contact Us</Link></li>
-                
                 {isAuthenticated && (
-                    <li className="user-profile">
-                        <div onClick={toggleDropdown} className="profile-container">
-                            <img src={user.picture} alt="Profile" className="profile-pic" />
+                    <li className="user-profile" style={{ position: 'relative' }}>
+                        <div onClick={toggleDropdown} className="profile-container" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <img src={user.picture} alt="Profile" className="profile-pic" style={{ width: 36, height: 36, borderRadius: '50%', border: '2px solid #007bff' }} />
+                            <span style={{ fontWeight: 600, color: '#222' }}>{user.name.split(' ')[0]}</span>
                         </div>
                         {showDropdown && (
                             <div className="dropdown-menu">
@@ -64,8 +74,15 @@ const Navbar = () => {
                     </li>
                 )}
                 {!isAuthenticated && (
-                    <li>
+                    <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                         <button className='btn' onClick={() => loginWithRedirect()}>Log In</button>
+                        <button
+                            className='btn'
+                            style={{ background: '#28a745', color: '#fff' }}
+                            onClick={() => loginWithRedirect({ screen_hint: "signup" })}
+                        >
+                            Sign Up
+                        </button>
                     </li>
                 )}
             </ul>

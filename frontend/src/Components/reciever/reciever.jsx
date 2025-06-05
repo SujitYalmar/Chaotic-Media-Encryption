@@ -25,6 +25,8 @@ const FileDecrypt = () => {
                 >
                     &#8592; Back
                 </button>
+                <br />
+                <br />
                 <h2>Decrypt a File</h2>
                 
                 <form onSubmit={handleSubmit}>

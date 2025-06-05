@@ -54,6 +54,8 @@ const FileEncrypt = () => {
                 >
                     &#8592; Back
                 </button>
+                <br />
+                <br />
                 <h2>Encrypt a File</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="file">Choose file to encrypt</label>
