@@ -1,15 +1,15 @@
-package com.example.demo1.controller;
+package com.example.demo.controller;
 
-import com.example.demo1.service.EncryptionService;
+import com.example.demo.service.EncryptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.mail.javamail.JavaMailSender;
 
 import jakarta.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+
 @RestController
 @RequestMapping("/file")
 public class FileController {

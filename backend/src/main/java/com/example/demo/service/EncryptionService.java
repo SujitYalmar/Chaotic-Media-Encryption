@@ -1,6 +1,7 @@
-package com.example.demo1.service;
+package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,14 @@ public class EncryptionService {
 
     // Encrypt file using XOR (for demonstration, replace this with Henon map logic later)
     public File encryptFile(MultipartFile file, String key) throws IOException {
-        File encryptedFile = new File("encrypted-" + file.getOriginalFilename());
+        // Create an encrypted file with a unique name
+        File encryptedFile = new File("encrypted-" + System.currentTimeMillis() + "-" + file.getOriginalFilename());
         try (FileOutputStream fos = new FileOutputStream(encryptedFile)) {
             byte[] fileBytes = file.getBytes();
             byte[] keyBytes = key.getBytes();
             byte[] encryptedBytes = new byte[fileBytes.length];
 
+            // XOR encryption logic
             for (int i = 0; i < fileBytes.length; i++) {
                 encryptedBytes[i] = (byte) (fileBytes[i] ^ keyBytes[i % keyBytes.length]);
             }
@@ -37,12 +40,14 @@ public class EncryptionService {
 
     // Decrypt file using XOR (for demonstration, replace this with Henon map logic later)
     public File decryptFile(MultipartFile file, String key) throws IOException {
-        File decryptedFile = new File("decrypted-" + file.getOriginalFilename());
+        // Create a decrypted file with a unique name
+        File decryptedFile = new File("decrypted-" + System.currentTimeMillis() + "-" + file.getOriginalFilename());
         try (FileOutputStream fos = new FileOutputStream(decryptedFile)) {
             byte[] fileBytes = file.getBytes();
             byte[] keyBytes = key.getBytes();
             byte[] decryptedBytes = new byte[fileBytes.length];
 
+            // XOR decryption logic
             for (int i = 0; i < fileBytes.length; i++) {
                 decryptedBytes[i] = (byte) (fileBytes[i] ^ keyBytes[i % keyBytes.length]);
             }
@@ -51,6 +56,7 @@ public class EncryptionService {
         }
         return decryptedFile;
     }
+    
 
     // Send an email with the encrypted file and key
     public void sendFileWithKey(String recipientEmail, File encryptedFile, String key) throws MessagingException {
@@ -65,28 +71,9 @@ public class EncryptionService {
         // Attach the encrypted file
         helper.addAttachment(encryptedFile.getName(), encryptedFile);
 
-        // Optionally, attach the key as a text file
-        helper.addAttachment("key.txt", new jakarta.activation.DataSource() {
-            @Override
-            public java.io.InputStream getInputStream() throws IOException {
-                return new java.io.ByteArrayInputStream(key.getBytes());
-            }
-
-            @Override
-            public java.io.OutputStream getOutputStream() throws IOException {
-                throw new IOException("No output stream available");
-            }
-
-            @Override
-            public String getContentType() {
-                return "text/plain";
-            }
-
-            @Override
-            public String getName() {
-                return "key.txt";
-            }
-        });
+        // Convert key to bytes and attach it as a text file
+        ByteArrayResource keyResource = new ByteArrayResource(key.getBytes());
+        helper.addAttachment("key.txt", keyResource, "text/plain");
 
         // Send the email
         mailSender.send(message);

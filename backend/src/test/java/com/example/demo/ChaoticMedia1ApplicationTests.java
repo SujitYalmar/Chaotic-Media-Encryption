@@ -1,10 +1,10 @@
-package com.example.demo1;
+package com.example.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChaoticMediaEncryption1ApplicationTests {
+class ChaoticMedia1ApplicationTests {
 
 	@Test
 	void contextLoads() {
