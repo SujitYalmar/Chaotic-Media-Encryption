@@ -1,6 +1,6 @@
-# 🔐 Chaotic Media Encryption
-
 <div align="center">
+
+# 🔐 Chaotic Media Encryption
 
 ![Encryption](https://img.shields.io/badge/Security-High-brightgreen?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
@@ -41,29 +41,18 @@
 ### 📤 Transfer Features
 
 - **Multiple File Formats**: Support for images, videos, audio, and documents
-- **Batch Upload**: Transfer multiple files simultaneously
+- **Drag & Drop Interface**: Easy file upload experience
+- **Batch Processing**: Upload multiple files simultaneously
 - **Progress Tracking**: Real-time upload/download status
 - **Resume Capability**: Continue interrupted transfers
-- **Link Sharing**: Generate secure sharing links
 
 ### 🎨 User Experience
 
-- **Modern Interface**: Clean and intuitive design
-- **Drag & Drop**: Easy file selection
-- **Responsive Design**: Optimized for desktop and mobile
-- **Dark Mode**: Eye-friendly interface options
-
----
-
-## 🖥️ User Interface Design
-
-<div align="center">
-
-![Screenshot 2024-11-13 221238](https://github.com/user-attachments/assets/d34b67a1-24e9-4261-a7e1-cedd7d226514)
-
-*Clean and intuitive interface for seamless file encryption and transfer*
-
-</div>
+- **Modern UI/UX**: Clean and intuitive interface
+- **Dark Mode**: Eye-friendly viewing experience
+- **Responsive Design**: Works seamlessly on all screen sizes
+- **Quick Share**: Generate shareable links instantly
+- **File Preview**: View files before downloading
 
 ---
 
@@ -71,89 +60,213 @@
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
-- npm or yarn
-- Modern web browser
+```bash
+Node.js >= 14.x
+npm >= 6.x
+MongoDB >= 4.x
+```
 
-### Setup Instructions
+### Clone the Repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/SujitYalmar/Chaotic-Media-Encryption.git
-
-# Navigate to project directory
 cd Chaotic-Media-Encryption
+```
 
-# Install dependencies
+### Install Dependencies
+
+```bash
+# Install backend dependencies
+cd backend
 npm install
 
-# Start the development server
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+### Environment Setup
+
+Create a `.env` file in the backend directory:
+
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/chaotic-encryption
+JWT_SECRET=your_jwt_secret_key
+ENCRYPTION_KEY=your_encryption_key
+```
+
+### Run the Application
+
+```bash
+# Start backend server
+cd backend
+npm start
+
+# Start frontend (in a new terminal)
+cd frontend
 npm start
 ```
 
+The application should now be running on `http://localhost:3000`
+
 ---
 
-## 📖 Usage
+## 💻 Usage
 
-### Basic Workflow
+### Basic File Transfer
 
-1. **Upload**: Select or drag & drop your media files
-2. **Encrypt**: Files are automatically encrypted using chaotic algorithms
-3. **Share**: Receive a secure link to share with recipients
-4. **Download**: Recipients decrypt and download files securely
+1. **Upload File**
+   ```javascript
+   // Navigate to the upload section
+   // Drag and drop or click to select files
+   // Files will be automatically encrypted
+   ```
 
-### Example Code
+2. **Share Link**
+   ```javascript
+   // Copy the generated secure link
+   // Optionally set password protection
+   // Set expiration time if needed
+   ```
+
+3. **Download File**
+   ```javascript
+   // Recipient uses the shared link
+   // Enter password if required
+   // File is decrypted on download
+   ```
+
+### Advanced Usage
+
+#### Custom Encryption Parameters
 
 ```javascript
-// Initialize encryption
-const encryption = new ChaoticEncryption();
+const encryptionConfig = {
+  algorithm: 'chaotic-aes-256',
+  keyDerivation: 'pbkdf2',
+  iterations: 100000,
+  saltLength: 32
+};
+```
 
-// Encrypt file
-const encryptedData = encryption.encryptFile(fileData);
+#### API Integration
 
-// Generate secure link
-const shareLink = generateSecureLink(encryptedData);
+```javascript
+const axios = require('axios');
+
+// Upload file via API
+const uploadFile = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  
+  const response = await axios.post('/api/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  });
+  
+  return response.data.shareLink;
+};
 ```
 
 ---
 
 ## 🔒 Security
 
-### Encryption Details
+### Encryption Algorithm
 
-Our platform uses **chaotic encryption algorithms** based on chaos theory, which provides:
+Our platform uses a hybrid approach combining:
 
-- **High Sensitivity**: Small changes in initial conditions produce vastly different outputs
-- **Unpredictability**: Encryption patterns are extremely difficult to predict
-- **Non-Linearity**: Resistant to traditional cryptanalysis methods
-- **Key Space Complexity**: Enormous key space makes brute-force attacks impractical
+- **Chaotic Maps**: For generating unpredictable encryption keys
+- **AES-256**: Industry-standard symmetric encryption
+- **RSA-2048**: For secure key exchange
 
-### Best Practices
+### Security Best Practices
 
-- ✅ Use strong passwords for additional file protection
-- ✅ Enable auto-destruction for sensitive files
-- ✅ Share links through secure channels
-- ✅ Verify recipient identity before sharing
-- ❌ Don't share encryption keys through the same channel as file links
+1. **Always use HTTPS** for file transfers
+2. **Enable password protection** for sensitive files
+3. **Set appropriate expiration times** for shared links
+4. **Verify recipient identity** before sharing links
+5. **Use strong passwords** for additional protection
+
+### Threat Model
+
+Our security design protects against:
+
+- ✅ Man-in-the-middle attacks
+- ✅ Server-side data breaches
+- ✅ Brute force attacks
+- ✅ Replay attacks
+- ✅ Unauthorized access
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Encryption**: Custom chaotic encryption algorithms
-- **Backend**: Node.js / Express
-- **Storage**: Secure cloud infrastructure
-- **Authentication**: JWT-based security
+### Frontend
+- React.js
+- Material-UI
+- Axios
+- React Router
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+
+### Security
+- Crypto.js
+- bcrypt
+- JWT
+- Custom Chaotic Encryption
 
 ---
 
-## 📊 Project Status
+## 📊 Architecture
 
-- [x] Core encryption engine
-- [x] User interface design
-- [x] File upload/download functionality
-- [x] Secure link generation
+```
+┌─────────────┐         ┌─────────────┐         ┌─────────────┐
+│   Client    │────────▶│   Server    │────────▶│  Database   │
+│  (Browser)  │◀────────│  (Node.js)  │◀────────│  (MongoDB)  │
+└─────────────┘         └─────────────┘         └─────────────┘
+      │                        │                        │
+      │                        │                        │
+      ▼                        ▼                        ▼
+  Encryption              Routing                  Encrypted
+  Layer                   Logic                    Storage
+```
+
+---
+
+## 🧪 Testing
+
+### Run Tests
+
+```bash
+# Backend tests
+cd backend
+npm test
+
+# Frontend tests
+cd frontend
+npm test
+
+# Integration tests
+npm run test:integration
+```
+
+### Test Coverage
+
+```bash
+npm run test:coverage
+```
+
+---
+
+## 📈 Roadmap
+
+### Version 2.0 (Upcoming)
+
 - [ ] Mobile application (In Progress)
 - [ ] API documentation
 - [ ] Multi-language support
