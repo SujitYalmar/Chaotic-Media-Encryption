@@ -5,23 +5,7 @@
 ![Encryption](https://img.shields.io/badge/Security-High-brightgreen?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
-**A secure media transfer platform leveraging chaotic encryption algorithms for maximum data protection**
-
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Security](#-security) • [Contributing](#-contributing)
-
-</div>
-
----
-
-<div align="center">
-
-### 🚀 Try it now!
-
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-ff6b6b?style=for-the-badge&labelColor=4a90e2&logoColor=white)](https://encryptx.netlify.app/)
-
-**Experience the power of chaotic encryption in action!**  
-*Click the badge above to access the live demo and see how secure file transfer works.*
 
 </div>
 
@@ -65,13 +49,6 @@ This application leverages **chaotic maps** - mathematical functions that exhibi
 - 🌐 Cross-browser compatibility
 - 🎯 No external dependencies for core encryption
 - 📊 Performance optimized for large files
-
----
-
-## 🚀 Live Demo
-
-**Experience the application**: [https://encryptx.netlify.app/](https://encryptx.netlify.app/)
-
 ---
 
 ## 🛠️ Installation
