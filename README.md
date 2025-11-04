@@ -14,8 +14,6 @@
 
 ---
 
-## 🌟 Live Preview
-
 <div align="center">
 
 ### 🚀 Try it now!
