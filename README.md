@@ -36,163 +36,186 @@
 This application leverages **chaotic maps** - mathematical functions that exhibit highly sensitive dependence on initial conditions - to generate pseudo-random encryption keys. Unlike traditional encryption methods, chaotic encryption offers:
 
 - **Non-linearity**: Makes cryptanalysis significantly more difficult
-- **Sensitivity to initial conditions**: Small changes in input produce drastically different outputs
-- **Deterministic chaos**: Reproducible yet unpredictable behavior
-- **High entropy**: Ensures strong randomness in encryption keys
-
-### 🔐 Key Features
-
-- **Chaotic Encryption Algorithm**: Utilizes chaos theory for dynamic encryption keys
-- **Real-Time Encryption**: Files are encrypted instantly during upload
-- **Secure Key Exchange**: Advanced key generation and distribution protocols
-- **End-to-End Security**: Your files are encrypted from upload to download
-- **Browser-Based**: No software installation required, works entirely in-browser
-- **Privacy-First**: No data stored on servers after transfer completion
-- **Cross-Platform Compatibility**: Works on Chrome, Firefox, Safari, and Edge
-- **Visual Feedback**: Users can visualize the encryption process
+- **High sensitivity**: Even minute changes in initial conditions produce vastly different results
+- **Deterministic nature**: Same inputs always produce same outputs, ensuring reliable decryption
+- **Computational efficiency**: Faster than many traditional encryption algorithms
 
 ---
 
-## 🔍 Security Analysis
+## ✨ Features
 
-### Encryption Strength
+### Core Functionality
+- 🔒 **Military-Grade Encryption**: Implementation of advanced chaotic encryption algorithms
+- 📁 **Drag-and-Drop Interface**: Intuitive file upload system supporting multiple file formats
+- 🔑 **Custom Key Generation**: User-defined encryption keys with additional security parameters
+- ⚡ **Real-time Processing**: Fast encryption/decryption with visual progress indicators
+- 💾 **Secure Downloads**: Encrypted files ready for safe transmission
+- 🎨 **Modern UI/UX**: Clean, responsive design with smooth animations
 
-The chaotic encryption algorithm implemented in this project provides:
+### Security Features
+- 🛡️ Advanced chaotic map-based encryption
+- 🔐 Client-side processing (no server storage)
+- 🚫 No data persistence or logging
+- ✅ Secure key management system
+- 🔄 One-time encryption sessions
 
-- **Key space complexity**: Large enough to resist brute-force attacks
-- **Diffusion and confusion**: Core principles of strong encryption
-- **Avalanche effect**: Minor input changes create major output variations
-- **Statistical randomness**: Encrypted data appears completely random
-
-### Privacy Guarantees
-
-- Files are encrypted client-side before transmission
-- No plain-text data ever reaches the server
-- Encryption keys are never stored or logged
-- Automatic data purging after successful transfer
-- Zero-knowledge architecture ensures maximum privacy
-
----
-
-## 🎯 Use Cases
-
-- **Personal File Sharing**: Share sensitive documents securely with friends and family
-- **Business Communications**: Transfer confidential business files safely
-- **Educational Purposes**: Learn and demonstrate cryptographic concepts
-- **Research Applications**: Experiment with chaotic encryption algorithms
-- **Privacy-Conscious Users**: Anyone seeking enhanced file transfer security
+### Technical Highlights
+- ⚙️ Pure JavaScript implementation
+- 📱 Fully responsive design
+- 🌐 Cross-browser compatibility
+- 🎯 No external dependencies for core encryption
+- 📊 Performance optimized for large files
 
 ---
 
-## 🚀 Installation
+## 🚀 Live Demo
+
+**Experience the application**: [https://encryptx.netlify.app/](https://encryptx.netlify.app/)
+
+---
+
+## 🛠️ Installation
 
 ### Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Basic understanding of file encryption concepts
 
-- Node.js (v14 or higher)
-- npm or yarn package manager
-- Modern web browser
-
-### Setup Steps
+### Local Setup
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/SujitYalmar/Chaotic-Media-Encryption.git
-   cd Chaotic-Media-Encryption
-   ```
+```bash
+git clone https://github.com/SujitYalmar/Chaotic-Media-Encryption.git
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+2. **Navigate to project directory**
+```bash
+cd Chaotic-Media-Encryption
+```
 
-3. **Start the development server**
-   ```bash
-   npm start
-   # or
-   yarn start
-   ```
+3. **Open in browser**
+- Simply open `index.html` in your preferred web browser
+- Or use a local server:
+```bash
+# Using Python
+python -m http.server 8000
 
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
+# Using Node.js (http-server)
+npx http-server
+```
 
----
-
-## 💻 Usage
-
-### Encrypting and Sending Files
-
-1. **Select File**: Click on the upload area or drag and drop your file
-2. **Automatic Encryption**: The file is automatically encrypted using chaotic algorithms
-3. **Generate Link**: A secure, unique link is created for your encrypted file
-4. **Share Link**: Share the link with your intended recipient
-5. **Time-Limited Access**: Links expire after a set time for added security
-
-### Receiving Files
-
-1. **Open Link**: Click on the shared link
-2. **Automatic Decryption**: File is decrypted securely in your browser
-3. **Download**: Save the decrypted file to your device
-
-### Advanced Options
-
-- **Custom expiration time**: Set how long the file remains accessible
-- **Password protection**: Add an extra layer of security with passwords
-- **Download limits**: Restrict the number of times a file can be downloaded
+4. **Access the application**
+- Navigate to `http://localhost:8000` (or respective port)
 
 ---
 
-## 🔐 Security Features
+## 📖 Usage
 
-### Chaotic Encryption Algorithm
+### Encrypting Files
 
-- Uses Logistic Map and Henon Map for key generation
-- Multiple rounds of encryption for enhanced security
-- Unique encryption keys for each file transfer session
+1. **Upload Your File**
+   - Click the upload area or drag and drop your file
+   - Supported formats: Images, documents, videos, and more
 
-### Data Protection
+2. **Enter Encryption Key**
+   - Provide a strong, memorable encryption key
+   - **Important**: Save this key securely - it's required for decryption
 
-- **Client-Side Encryption**: All encryption happens in your browser
-- **No Server Storage**: Files are never stored in plain text
-- **Secure Transmission**: HTTPS/TLS for all data transfers
-- **Automatic Cleanup**: Encrypted data is automatically deleted after expiration
+3. **Configure Parameters** (Optional)
+   - Adjust chaos parameters for enhanced security
+   - Default values provide strong encryption
+
+4. **Encrypt**
+   - Click "Encrypt" button
+   - Wait for processing to complete
+
+5. **Download**
+   - Download your encrypted file
+   - Share securely with intended recipient
+
+### Decrypting Files
+
+1. **Upload Encrypted File**
+   - Select the encrypted file you want to decrypt
+
+2. **Enter Decryption Key**
+   - Use the same key that was used for encryption
+   - **Must be exact** - chaotic systems are highly sensitive
+
+3. **Decrypt**
+   - Click "Decrypt" button
+   - Wait for processing
+
+4. **Download Original**
+   - Download and access your original file
+
+### 💡 Tips
+- **Strong Keys**: Use complex, unique keys for maximum security
+- **Key Storage**: Store keys securely - losing them means losing access to encrypted files
+- **Testing**: Test with non-critical files first
+- **Backup**: Keep backups of important encrypted files
+
+---
+
+## 🔒 Security
+
+### Encryption Algorithm
+
+This project implements chaotic encryption using:
+- **Logistic Map**: Primary chaotic function
+- **Bifurcation Parameters**: For enhanced randomness
+- **XOR Operations**: For secure bit manipulation
+- **Key Stretching**: To strengthen user-provided keys
+
+### Security Considerations
+
+✅ **What This Project Provides:**
+- Strong encryption for file transmission
+- Protection against casual inspection
+- Learning platform for chaotic cryptography
+- Open-source, auditable code
+
+⚠️ **Important Notes:**
+- This is an educational/demonstration project
+- For critical applications, consider industry-standard solutions (AES-256, RSA)
+- Always test thoroughly before production use
+- Complement with other security measures (secure channels, authentication)
 
 ### Best Practices
-
-- Always use strong, unique passwords when password-protecting files
-- Share links through secure channels (encrypted messaging apps)
-- Set appropriate expiration times based on sensitivity
-- Verify recipient identity before sharing sensitive files
+1. Use strong, unique keys for each encryption
+2. Never share keys through insecure channels
+3. Verify file integrity after encryption/decryption
+4. Keep software updated
+5. Report security issues responsibly
 
 ---
 
-## 🛠️ Technologies Used
+## 🏗️ Technical Architecture
 
-- **Frontend**: React.js, HTML5, CSS3
+### Project Structure
+```
+Chaotic-Media-Encryption/
+├── index.html          # Main application interface
+├── styles.css          # Styling and animations
+├── script.js           # Core encryption logic
+├── chaos.js            # Chaotic map implementations
+├── utils.js            # Helper functions
+├── README.md           # Project documentation
+└── LICENSE             # MIT License
+```
+
+### Technology Stack
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Encryption**: Custom chaotic encryption algorithms
-- **Backend**: Node.js, Express.js
-- **Storage**: Temporary encrypted file storage
-- **Deployment**: Netlify
+- **File Handling**: FileReader API, Blob API
+- **UI/UX**: Responsive design, CSS animations
 
 ---
 
-## 📈 Performance Metrics
-
-- **Encryption Speed**: Optimized for real-time processing
-- **File Size Support**: Handles various file sizes efficiently
-- **Browser Compatibility**: Works on all modern browsers
-- **Response Time**: Near-instantaneous encryption for typical file sizes
-
----
-
-## 🌟 Project Goals
-
-This project aims to:
+## 🎯 Project Goals
 
 1. Demonstrate practical applications of chaos theory in cryptography
-2. Provide accessible encryption tools for everyday users
-3. Raise awareness about data security and privacy
+2. Provide a user-friendly platform for secure file encryption
+3. Promote understanding of alternative encryption methods
 4. Serve as an educational resource for cryptography students
 5. Contribute to the open-source security community
 
@@ -209,7 +232,6 @@ We welcome contributions from the community! Here's how you can help:
 5. **Open a Pull Request**
 
 ### Contribution Guidelines
-
 - Follow the existing code style and conventions
 - Write clear, descriptive commit messages
 - Add tests for new features
@@ -225,12 +247,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## 👨‍💻 Author
-
-**Sujit Yalmar**
-
-- GitHub: [@SujitYalmar](https://github.com/SujitYalmar)
-- Project Link: [https://github.com/SujitYalmar/Chaotic-Media-Encryption](https://github.com/SujitYalmar/Chaotic-Media-Encryption)
-- Live Demo: [https://encryptx.netlify.app/](https://encryptx.netlify.app/)
+<img src="https://sujityalmar.netlify.app/favicon.ico" alt="Sujit Yalmar Logo" height="32"> **Sujit Yalmar** &nbsp; | &nbsp; [GitHub](https://github.com/SujitYalmar) &nbsp; | &nbsp; [Portfolio](https://sujityalmar.netlify.app/) &nbsp; | &nbsp; [LinkedIn](https://www.linkedin.com/in/sujit-yalmar/)
 
 ---
 
