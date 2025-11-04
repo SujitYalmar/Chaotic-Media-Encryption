@@ -247,7 +247,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 ## 👨‍💻 Author
-<img src="https://sujityalmar.netlify.app/favicon.ico" alt="Sujit Yalmar Logo" height="32"> **Sujit Yalmar** &nbsp; | &nbsp; [GitHub](https://github.com/SujitYalmar) &nbsp; | &nbsp; [Portfolio](https://sujityalmar.netlify.app/) &nbsp; | &nbsp; [LinkedIn](https://www.linkedin.com/in/sujit-yalmar/)
+**Sujit Yalmar** &nbsp; | &nbsp; [GitHub](https://github.com/SujitYalmar) &nbsp; | &nbsp; [Portfolio](https://sujityalmar.netlify.app/) &nbsp; | &nbsp; [LinkedIn](https://www.linkedin.com/in/sujit-yalmar/)
 
 ---
 
