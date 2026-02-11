@@ -1,58 +1,97 @@
-.about{
-    margin: 195px auto;
+/* About.css */
+
+.about {
+    margin: 80px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 90%;
-    user-select: none;  
-    cursor: pointer;
+    flex-wrap: wrap; /* Key for responsiveness */
+    gap: 40px;
+    background: transparent;
 }
-.about-left{
+
+.about-left {
     flex-basis: 40%;
     position: relative;
 }
-.about-right{
-    flex-basis: 56%;
+
+.img-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
-.about-img{
+
+.about-img {
     width: 100%;
-    border-radius: 10px;
+    display: block;
+    filter: brightness(0.8);
 }
-.play-icon{
-    margin-top: 20px;
-    width: 60px;
+
+.play-overlay {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    width: 60px;
     cursor: pointer;
+    background: rgba(59, 130, 246, 0.6);
+    padding: 15px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
 }
-.about h3{
-    font-weight: 600;
-    font-weight: 16px;
-    color: #212EA0;
+
+.play-overlay:hover {
+    background: #3b82f6;
+    transform: translate(-50%, -50%) scale(1.1);
 }
-.about h2{
-   font-size: 35px;
-   color: #000F38;
-   margin: 10px 0;
-   max-width: 400px;
+
+.play-icon {
+    width: 100%;
 }
-.about p{
-    color: #676767;
+
+.about-right {
+    flex-basis: 55%;
+}
+
+.section-tag {
+    color: #3b82f6; /* Electric Blue Accent */
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    color: #f8fafc; /* High Visibility Off-White */
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: #94a3b8; /* Muted Slate Gray */
     margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 1.05rem;
 }
-/* ------- media query ------------- */
-@media (max-width: 800px){
-    .about{
-        flex-direction: column;
-    }
-    .about-left{
+
+/* ---------------------------------------------------
+   MOBILE RESPONSIVENESS
+   --------------------------------------------------- */
+@media (max-width: 900px) {
+    .about-left, .about-right {
         flex-basis: 100%;
-        margin: 20px;
-        order: 2;
     }
-    .about-right{
-        flex-basis: 100%;
+    .about {
+        margin: 40px auto;
+        text-align: center;
+    }
+    .img-frame {
+        max-width: 500px;
+        margin: 0 auto;
     }
 }

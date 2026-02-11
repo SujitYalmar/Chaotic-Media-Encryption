@@ -1,94 +1,132 @@
-/* Add styles for the sender (encrypt) form here */
-
-.encrypt-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('../../assets/encrypt.jpg') no-repeat center center fixed;
-  background-size: cover;
-  padding-top: 70px; /* Adjust to your navbar height */
+.encrypt-page-wrapper {
+    min-height: 100vh;
+    background: #020617; /* Deep Cyber Navy */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px 40px;
 }
 
-.login-form {
-  width: 100%;
-  max-width: 400px;
-  padding: 32px 24px;
-  background:  #707070;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  position: relative; /* Ensure absolute positioning works */
+.glass-encrypt-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    color: white;
 }
-.login-form h2 {
-  margin-bottom: 24px;
-  color: #22223b;
-  font-size: 1.7rem;
-  text-align: center;
-  font-weight: 700;
-  letter-spacing: 1px;
+
+.minimal-back-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    margin-bottom: 25px;
+    transition: color 0.3s;
 }
-.login-form label {
-  display: block;
-  margin-top: 16px;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #22223b;
-  font-size: 1rem;
+
+.minimal-back-btn:hover { color: #3b82f6; }
+
+.encrypt-header {
+    text-align: center;
+    margin-bottom: 30px;
 }
-.login-form input[type="file"],
-.login-form input[type="password"],
-.login-form input[type="email"] {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  border: 1px solid #c9c9c9;
-  border-radius: 5px;
-  font-size: 1rem;
-  background: #f9f9f9;
-  transition: border 0.2s;
+
+.encrypt-accent-icon { color: #3b82f6; margin-bottom: 15px; }
+
+.encrypt-header h2 { font-size: 1.8rem; letter-spacing: -0.5px; margin-bottom: 8px; }
+
+.encrypt-header p { font-size: 0.9rem; color: #64748b; line-height: 1.4; }
+
+/* File Upload Zone */
+.file-upload-zone {
+    position: relative;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
-.login-form input:focus {
-  border: 1.5px solid #007bff;
-  outline: none;
-  background: #fff;
+
+.file-upload-zone.active { border-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
+
+.file-upload-zone input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
 }
-.login-form button {
-  width: 100%;
-  padding: 12px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-top: 18px;
-  transition: background 0.2s;
+
+/* Input Fields */
+.encrypt-input-group {
+    position: relative;
+    margin-bottom: 20px;
 }
-.login-form button:hover {
-  background: #0056b3;
+
+.field-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #475569;
 }
-.back-btn {
-  position: absolute;
-  top: 15px;
-  left: 18px;
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 1.1rem;
-  cursor: pointer;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-  display: flex;
-  align-items: corner;
-  gap: 6px;
+
+.encrypt-input-group input {
+    width: 100%;
+    padding: 14px 14px 14px 45px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
 }
-.back-btn:hover {
-  background: #e6f0ff;
-  color: #0056b3;
-}     
+
+.encrypt-input-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+/* Primary Button */
+.main-encrypt-btn {
+    width: 100%;
+    padding: 14px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.main-encrypt-btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+.animate-spin { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .glass-encrypt-card { padding: 30px 20px; }
+    .encrypt-header h2 { font-size: 1.5rem; }
+}

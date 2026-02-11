@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png';
 import menu_icon from '../../assets/menu-icon.png';
 import { Link } from 'react-scroll';
 import { useAuth0 } from "@auth0/auth0-react";
+import { ChevronDown, LogOut, Settings } from 'lucide-react';
 
 const Navbar = () => {
     const [sticky, setSticky] = useState(false);
@@ -12,81 +13,63 @@ const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false);
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             window.scrollY > 50 ? setSticky(true) : setSticky(false);
-        });
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const toggleMenu = () => {
-        setMobileMenu(!mobileMenu);
-    };
-
-    const toggleDropdown = () => {
-        setShowDropdown(!showDropdown);
-    };
+    const toggleMenu = () => setMobileMenu(!mobileMenu);
+    const toggleDropdown = () => setShowDropdown(!showDropdown);
 
     return (
-        <nav className={`container ${sticky ? 'dark-nav' : ''}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <img src={logo} alt="Logo" className='logo' />
-            <ul
-                className={mobileMenu ? '' : 'hide-mobile-menu'}
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '24px',
-                    margin: 0,
-                    padding: 0,
-                    listStyle: 'none'
-                }}
-            >
+        <nav className={`nav-wrapper ${sticky ? 'dark-nav' : ''}`}>
+            <img src={logo} alt="EncryptX Logo" className='logo' />
+            
+            <ul className={`nav-links ${mobileMenu ? 'show-mobile' : ''}`}>
                 <li><Link to='hero' smooth={true} offset={0} duration={500}>Home</Link></li>
-                <li><Link to='program' smooth={true} offset={-260} duration={500}>Feature</Link></li>
-                <li><Link to='about' smooth={true} offset={-150} duration={500}>About us</Link></li>
+                <li><Link to='program' smooth={true} offset={-260} duration={500}>Features</Link></li>
+                <li><Link to='about' smooth={true} offset={-150} duration={500}>About</Link></li>
                 <li><Link to='testimonials' smooth={true} offset={-260} duration={500}>Feedback</Link></li>
-                <li><Link to='contact' smooth={true} offset={-260} duration={500}>Contact Us</Link></li>
-                {isAuthenticated && (
-                    <li className="user-profile" style={{ position: 'relative' }}>
-                        <div onClick={toggleDropdown} className="profile-container" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <img src={user.picture} alt="Profile" className="profile-pic" style={{ width: 36, height: 36, borderRadius: '50%', border: '2px solid #007bff' }} />
-                            <span style={{ fontWeight: 600, color: '#222' }}>{user.name.split(' ')[0]}</span>
+                <li><Link to='contact' smooth={true} offset={-260} duration={500}>Contact</Link></li>
+                
+                {isAuthenticated ? (
+                    <li className="profile-item">
+                        <div onClick={toggleDropdown} className="profile-trigger">
+                            <img src={user.picture} alt="User" className="nav-profile-img" />
+                            <span className="user-firstname">{user.name.split(' ')[0]}</span>
+                            <ChevronDown size={14} className={showDropdown ? 'rotate' : ''} />
                         </div>
+                        
                         {showDropdown && (
-                            <div className="dropdown-menu">
-                                <div className="profile-header">
-                                    <img src={user.picture} alt={user.name} className="profile-large-pic" />
-                                    <div className="profile-info">
-                                        <h3>{user.name}</h3>
+                            <div className="nav-dropdown">
+                                <div className="dropdown-user-card">
+                                    <img src={user.picture} alt={user.name} />
+                                    <div>
+                                        <h4>{user.name}</h4>
                                         <p>{user.email}</p>
                                     </div>
                                 </div>
-                                <hr />
-                                <button className='btn profile-btn' onClick={() => window.location.href = '/profile-settings'}>
-                                    Profile Settings
+                                <div className="divider"></div>
+                                <button onClick={() => window.location.href = '/profile-settings'}>
+                                    <Settings size={16} /> Settings
                                 </button>
-                                <button
-                                    className='btn profile-btn logout-btn'
-                                    onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-                                >
-                                    Log Out
+                                <button className="logout-action" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+                                    <LogOut size={16} /> Log Out
                                 </button>
                             </div>
                         )}
                     </li>
-                )}
-                {!isAuthenticated && (
-                    <li style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-                        <button className='btn' onClick={() => loginWithRedirect()}>Log In</button>
-                        <button
-                            className='btn'
-                            style={{ background: '#28a745', color: '#fff' }}
-                            onClick={() => loginWithRedirect({ screen_hint: "signup" })}
-                        >
-                            Sign Up
-                        </button>
+                ) : (
+                    <li className="nav-auth">
+                        <button className='btn-login' onClick={() => loginWithRedirect()}>Log In</button>
+                        <button className='btn-signup' onClick={() => loginWithRedirect({ screen_hint: "signup" })}>Sign Up</button>
                     </li>
                 )}
             </ul>
-            <img src={menu_icon} alt="Menu Icon" className='menu-icon' onClick={toggleMenu} />
+            
+            <img src={menu_icon} alt="Menu" className='menu-toggle-icon' onClick={toggleMenu} />
         </nav>
     );
 };

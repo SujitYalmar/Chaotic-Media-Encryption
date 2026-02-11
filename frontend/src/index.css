@@ -1,54 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
+:root {
+  /* Core Colors */
+  --bg-main: #020617;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --primary-blue: #3b82f6;
+  --secondary-cyan: #2dd4bf;
+  
+  /* Text System */
+  --text-main: #f8fafc;    /* Off-white for readability */
+  --text-muted: #94a3b8;   /* Slate gray for secondary info */
+  --text-accent: #3b82f6;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Outfit", sans-serif;
 }
-body{
-  background: #F5F5F5;
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-a{
+
+a {
   text-decoration: none;
   color: inherit;
-  line-height: 1;
-  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.container{
+
+.container {
   padding-left: 10%;
   padding-right: 10%;
+  width: 100%;
 }
-.btn{
-  background: #FFF;
-  color: #212121;
-  padding: 14px 25px;
+
+/* Updated Button Utility */
+.btn {
+  background: var(--text-main);
+  color: var(--bg-main);
+  padding: 14px 28px;
   font-size: 16px;
-  border-radius: 30px;
+  font-weight: 600;
+  border-radius: 50px; /* Pill shape for modern look */
   cursor: pointer;
-  border: 0;
-  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.btn img{
-  width: 20px;
-  margin-left: 10px;
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
-.btn.dark-btn{
-  background: #212EA0;
+
+.btn.dark-btn {
+  background: var(--primary-blue);
   color: #fff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
 }
 
-/* ----- media query ----------- */
+.btn.dark-btn:hover {
+  background: #2563eb;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+}
 
-@media (max-width: 1200px){
-  .container{
+/* Glassmorphism Card Utility */
+.glass-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .container {
     padding-left: 5%;
     padding-right: 5%;
   }
-  .btn{
-    padding: 14px 22px;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 12px 22px;
+    font-size: 14px;
+    width: 100%; /* Full width on mobile for accessibility */
   }
 }

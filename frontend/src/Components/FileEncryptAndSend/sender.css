@@ -1,39 +1,26 @@
-.container {
-    width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+.icon-success {
+    color: #10b981; /* Emerald green */
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
 }
 
-.login-form h2 {
-    text-align: center;
+.spinner {
+    animation: spin 1s linear infinite;
 }
 
-.login-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.login-form input[type="email"],
-.login-form input[type="text"],
-.login-form input[type="file"],
-.login-form button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+.btn-encrypt.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background: #1e293b;
 }
 
-.login-form button {
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-}
-
-.login-form button:hover {
-    background-color: #45a049;
+/* Add a subtle pulse to the drop zone when a file is ready */
+.file-drop-zone.has-file {
+    border-style: solid;
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
 }

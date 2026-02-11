@@ -1,99 +1,126 @@
-.hero{
+/* Hero.css */
+.hero {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(8,0,58,0.7),rgba(8,0,58,0.7)), url('../../assets/encrypt.jpg');
+    /* Updated background with a darker, more professional overlay */
+    background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.9)), url('../../assets/encrypt.jpg');
     background-size: cover;
     background-position: center;
     color: #fff;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    user-select: none;  
-    cursor: pointer;
+    position: relative;
+    padding: 0 20px;
 }
-.hero-text{   
+
+.hero-text {
     text-align: center;
-    max-width: 800px;
+    max-width: 850px;
+    z-index: 5; /* Ensures links are clickable above overlays */
 }
-.hero-text h1{
-    font-size: 60px;
+
+.security-tag {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 14px;
     font-weight: 600;
-}
-.hero-text p{
-    max-width: 700px;
-    margin: 10px auto 20px;
-    line-height: 1.4;
-}
-.button{
-    margin-inline-end: 20px;
     display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #3c4d95;
-    border: none;
-    border-radius: 15px;
-    user-select: none;  
-    cursor: pointer;
-  } 
-  .button:hover {background-color: #d12421}
-  
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-/* ---------- media query --------- */
-
-@media (max-width: 850px){
-    .hero-text h1{
-        font-size: 40px;
-    }
-}
-@media (max-width: 650px){
-    .hero-text h1{
-        font-size: 30px;
-        max-width: 400px;
-        margin: auto;
-    }
-    .hero-text p{
-        font-size: 14px;
-        margin: 15px auto 30px;
-    }
+    margin-bottom: 25px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-/* Encrypt and Decrypt button styles */
+.hero-text h1 {
+    font-size: clamp(35px, 8vw, 65px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+    background: linear-gradient(to right, #3b82f6, #2dd4bf);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Redesigned Link Buttons */
+.hero-btns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .hero-action-btn {
-    display: inline-block;
-    min-width: 140px;
-    margin: 0 12px;
-    padding: 14px 28px;
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 35px;
+    font-size: 18px;
     font-weight: 600;
-    border: none;
+    text-decoration: none;
     border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(60,77,149,0.08);
-    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .hero-action-btn.encrypt {
-    background: linear-gradient(90deg, #3c4d95 60%, #4e8cff 100%);
-    color: #fff;
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
 }
 
 .hero-action-btn.decrypt {
-    background: linear-gradient(90deg, #d12421 60%, #ff6b6b 100%);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .hero-action-btn:hover {
-    box-shadow: 0 4px 16px rgba(60,77,149,0.18);
-    opacity: 0.93;
-    transform: translateY(-2px) scale(1.03);
+    transform: translateY(-3px);
+}
+
+.hero-action-btn.encrypt:hover {
+    background: #2563eb;
+    box-shadow: 0 15px 30px -5px rgba(59, 130, 246, 0.6);
+}
+
+.hero-action-btn.decrypt:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #3b82f6;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 650px) {
+    .hero-text h1 { font-size: 35px; }
+    .hero-action-btn { width: 100%; justify-content: center; }
+}
+/* Add these at the bottom of your Hero.css */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .hero-action-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
 }

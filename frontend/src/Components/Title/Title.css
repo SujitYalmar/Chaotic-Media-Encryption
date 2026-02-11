@@ -1,14 +1,51 @@
-.title{
+/* Title.css */
+
+.title {
     text-align: center;
-    color: #212EA0;
+    color: #3b82f6; /* var(--primary-blue) */
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    margin: 70px 0 30px;
+    margin-top: 70px;
+    margin-bottom: 30px;
 }
-.title h2{
-    font-size: 32px;
-    color: #000F38;
+
+.title p {
+    /* The small subtitle like 'OUR PROGRAM' or 'FEEDBACK' */
+    color: #3b82f6;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.title h2 {
+    /* The main section title like 'What User Says' or 'Our feature' */
+    font-size: clamp(28px, 4vw, 36px);
+    color: #f8fafc; /* var(--text-main) - This fixes the invisible text */
     margin-top: 5px;
     text-transform: none;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+}
+
+/* Subtle underline decoration for a tech feel */
+.title h2::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 4px;
+    background: #3b82f6;
+    border-radius: 2px;
+    margin: 10px auto 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .title {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+    .title h2 {
+        font-size: 24px;
+    }
 }

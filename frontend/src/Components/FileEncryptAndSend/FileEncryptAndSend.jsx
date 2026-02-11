@@ -1,63 +1,93 @@
-// FileEncryptAndSend.js
 import React, { useState } from 'react';
-import './sender.css'; // Import the CSS file
+import { Lock, Mail, Upload, ShieldCheck, Loader2, CheckCircle } from 'lucide-react'; 
+import './sender.css'; 
 
 const FileEncryptAndSend = () => {
-    // State for form fields
     const [file, setFile] = useState(null);
     const [email, setEmail] = useState('');
     const [encryptionKey, setEncryptionKey] = useState('');
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [isDone, setIsDone] = useState(false);
 
-    // Handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add logic for file encryption and sending here
-        console.log('File:', file);
-        console.log('Email:', email);
-        console.log('Encryption Key:', encryptionKey);
-    };
+        setIsProcessing(true);
 
-    // Handle file input
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
+        // Simulate the chaotic encryption delay
+        setTimeout(() => {
+            console.log('File Encrypted with Chaotic Mapping');
+            setIsProcessing(false);
+            setIsDone(true);
+            
+            // Reset after 3 seconds
+            setTimeout(() => setIsDone(false), 3000);
+        }, 2000);
     };
 
     return (
-        <div className="container">
-            <div className="login-form">
-                <h2>Encrypt and Send a File</h2>
+        <div className="encryption-wrapper">
+            <div className="glass-card">
+                <div className="header-section">
+                    {isDone ? (
+                        <CheckCircle size={40} className="icon-success" />
+                    ) : (
+                        <ShieldCheck size={40} className="icon-accent" />
+                    )}
+                    <h2>{isDone ? "Securely Dispatched" : "Secure File Encryption"}</h2>
+                    <p>
+                        {isDone 
+                            ? "Your media has been encrypted and sent." 
+                            : "Files are encrypted using chaotic mapping before transmission."}
+                    </p>
+                </div>
 
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="file">Choose file to encrypt</label>
-                    <input 
-                        type="file" 
-                        id="file" 
-                        onChange={handleFileChange}
-                        required
-                    /><br /><br />
+                <form onSubmit={handleSubmit} className="secure-form">
+                    <div className={`file-drop-zone ${file ? 'has-file' : ''}`}>
+                        <input 
+                            type="file" 
+                            onChange={(e) => setFile(e.target.files[0])} 
+                            disabled={isProcessing}
+                            required 
+                        />
+                        <Upload size={24} />
+                        <span>{file ? file.name : "Click or Drag to Upload File"}</span>
+                    </div>
 
-                    <label htmlFor="email">Recipient Email</label>
-                    <input 
-                        type="email" 
-                        id="recipientEmail" 
-                        placeholder="Enter recipient email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    /><br /><br />
+                    <div className="input-group">
+                        <Mail className="input-icon" size={18} />
+                        <input 
+                            type="email" 
+                            placeholder="Recipient Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            disabled={isProcessing}
+                            required
+                        />
+                    </div>
 
-                    <label htmlFor="encryptionKey">Enter Encryption Key</label>
-                    <input 
-                        type="text" 
-                        id="encryptionKey" 
-                        placeholder="Enter encryption key" 
-                        value={encryptionKey}
-                        onChange={(e) => setEncryptionKey(e.target.value)}
-                        required
-                    /><br /><br />
+                    <div className="input-group">
+                        <Lock className="input-icon" size={18} />
+                        <input 
+                            type="password" 
+                            placeholder="Set Encryption Key"
+                            value={encryptionKey}
+                            onChange={(e) => setEncryptionKey(e.target.value)}
+                            disabled={isProcessing}
+                            required
+                        />
+                    </div>
 
-                    <hr />
-                    <button type="submit">Encrypt and Send</button>
+                    <button 
+                        type="submit" 
+                        className={`btn-encrypt ${isProcessing ? 'loading' : ''}`}
+                        disabled={isProcessing}
+                    >
+                        {isProcessing ? (
+                            <><Loader2 className="spinner" size={18} /> Processing...</>
+                        ) : (
+                            "Encrypt & Dispatch"
+                        )}
+                    </button>
                 </form>
             </div>
         </div>

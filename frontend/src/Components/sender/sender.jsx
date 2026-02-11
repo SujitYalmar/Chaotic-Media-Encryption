@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- import this
+import { useNavigate } from 'react-router-dom';
+import { ShieldCheck, Mail, Lock, Upload, ArrowLeft, Loader2 } from 'lucide-react';
 import './sender.css';
 
 const FileEncrypt = () => {
     const [file, setFile] = useState(null);
     const [encryptionKey, setEncryptionKey] = useState('');
     const [email, setEmail] = useState('');
-    const navigate = useNavigate(); // <-- initialize
+    const [isProcessing, setIsProcessing] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!file || !encryptionKey || !email) return;
 
+        setIsProcessing(true);
         const formData = new FormData();
         formData.append('file', file);
         formData.append('key', encryptionKey);
@@ -23,68 +26,85 @@ const FileEncrypt = () => {
                 body: formData,
             });
             const text = await response.text();
-            console.log('Backend response:', text);
-
+            
             if (response.ok) {
                 alert('File uploaded and encrypted successfully!');
                 const el = document.getElementById('targetSection');
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
             } else {
                 alert('Encryption failed: ' + text);
             }
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred.');
+        } finally {
+            setIsProcessing(false);
         }
     };
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
-
     return (
-        <div className="encrypt-container">
-            <div className="login-form">
-                <button
-                    type="button"
-                    className="back-btn"
+        <div className="encrypt-page-wrapper">
+            <div className="glass-encrypt-card">
+                <button 
+                    type="button" 
+                    className="minimal-back-btn" 
                     onClick={() => navigate(-1)}
                 >
-                    &#8592; Back
+                    <ArrowLeft size={18} /> Back
                 </button>
-                <br />
-                <br />
-                <h2>Encrypt a File</h2>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="file">Choose file to encrypt</label>
-                    <input
-                        type="file"
-                        id="file"
-                        onChange={handleFileChange}
-                        required
-                    /><br /><hr />
 
-                    <label htmlFor="email">Enter your email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    /><br /><hr />
+                <div className="encrypt-header">
+                    <ShieldCheck size={44} className="encrypt-accent-icon" />
+                    <h2>Encrypt & Dispatch</h2>
+                    <p>Secure your media using advanced chaotic mapping protocols.</p>
+                </div>
 
-                    <label htmlFor="encryptionKey">Enter encryption key</label>
-                    <input
-                        type="password"
-                        id="encryptionKey"
-                        value={encryptionKey}
-                        onChange={(e) => setEncryptionKey(e.target.value)}
-                        required
-                    /><br /><br />
+                <form onSubmit={handleSubmit} className="secure-encrypt-form">
+                    {/* Responsive File Zone */}
+                    <div className={`file-upload-zone ${file ? 'active' : ''}`}>
+                        <input
+                            type="file"
+                            id="file"
+                            onChange={(e) => setFile(e.target.files[0])}
+                            required
+                        />
+                        <Upload size={24} />
+                        <span>{file ? file.name : "Select File to Encrypt"}</span>
+                    </div>
 
-                    <button type="submit">Encrypt File</button>
+                    <div className="encrypt-input-group">
+                        <Mail className="field-icon" size={18} />
+                        <input
+                            type="email"
+                            placeholder="Your Authorized Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div className="encrypt-input-group">
+                        <Lock className="field-icon" size={18} />
+                        <input
+                            type="password"
+                            placeholder="Set Encryption Key"
+                            value={encryptionKey}
+                            onChange={(e) => setEncryptionKey(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        className={`main-encrypt-btn ${isProcessing ? 'loading' : ''}`}
+                        disabled={isProcessing}
+                    >
+                        {isProcessing ? (
+                            <><Loader2 className="animate-spin" size={18} /> Processing...</>
+                        ) : (
+                            "Encrypt and Send"
+                        )}
+                    </button>
                 </form>
             </div>
         </div>

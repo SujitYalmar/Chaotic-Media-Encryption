@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import './reciever.css';
+import { Unlock, FileKey, Upload, ArrowLeft, Loader2, CheckCircle } from 'lucide-react';
+import './reciever.css'; // Note: Ensure the filename is correct (receiver.css)
 
 const FileDecrypt = () => {
     const [file, setFile] = useState(null);
     const [decryptionKey, setDecryptionKey] = useState('');
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [status, setStatus] = useState('idle'); // idle, processing, success
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!file || !decryptionKey) return;
 
-        if (!file || !decryptionKey) {
-            alert('Please provide both a file and decryption key.');
-            return;
-        }
+        setIsProcessing(true);
+        setStatus('processing');
 
         const formData = new FormData();
         formData.append('file', file);
         formData.append('key', decryptionKey);
-
+        
         try {
             const response = await fetch('http://localhost:8080/file/decryptFile', {
                 method: 'POST',
@@ -29,7 +31,6 @@ const FileDecrypt = () => {
             }
 
             const decryptedBlob = await response.blob();
-
             const url = window.URL.createObjectURL(decryptedBlob);
             const a = document.createElement('a');
             a.href = url;
@@ -39,56 +40,71 @@ const FileDecrypt = () => {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);
 
-            // ✅ Success alert
-            alert('File decrypted and downloaded successfully!');
+            setStatus('success');
+            setTimeout(() => {
+                setFile(null);
+                setDecryptionKey('');
+                setStatus('idle');
+                setIsProcessing(false);
+            }, 3000);
 
-            // ✅ Reset form
-            setFile(null);
-            setDecryptionKey('');
-            document.getElementById('file').value = ''; // clear file input manually
         } catch (error) {
             console.error('Error:', error);
             alert(error.message || 'An error occurred during decryption.');
+            setIsProcessing(false);
+            setStatus('idle');
         }
     };
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
-
     return (
-        <div className="decrypt-container">
-            <div className="login-form">
-                <button
-                    type="button"
-                    className="back-btn"
-                    onClick={() => window.history.back()}
-                >
-                    &#8592; Back
+        <div className="decrypt-page-wrapper">
+            <div className="glass-decrypt-card">
+                <button className="minimal-back-btn" onClick={() => window.history.back()}>
+                    <ArrowLeft size={18} /> Back
                 </button>
-                <br />
-                <br />
-                <h2>Decrypt a File</h2>
-                
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="file">Choose file to decrypt</label>
-                    <input 
-                        type="file" 
-                        id="file" 
-                        onChange={handleFileChange}
-                        required
-                    /><br /><hr />
 
-                    <label htmlFor="decryptionKey">Enter decryption key</label>
-                    <input 
-                        type="password" 
-                        id="decryptionKey" 
-                        value={decryptionKey}
-                        onChange={(e) => setDecryptionKey(e.target.value)}
-                        required
-                    /><br /><br />
+                <div className="decrypt-header">
+                    {status === 'success' ? (
+                        <CheckCircle size={44} className="success-glow" />
+                    ) : (
+                        <Unlock size={44} className="decrypt-accent" />
+                    )}
+                    <h2>Decrypt Media</h2>
+                    <p>Enter the chaotic key to unlock your protected files.</p>
+                </div>
+                
+                <form onSubmit={handleSubmit} className="secure-decrypt-form">
+                    <div className={`decrypt-drop-zone ${file ? 'file-active' : ''}`}>
+                        <input 
+                            type="file" 
+                            id="file" 
+                            onChange={(e) => setFile(e.target.files[0])} 
+                            disabled={isProcessing}
+                            required
+                        />
+                        <Upload size={24} />
+                        <span>{file ? file.name : "Select Encrypted File"}</span>
+                    </div>
+
+                    <div className="decrypt-input-group">
+                        <FileKey className="field-icon" size={18} />
+                        <input 
+                            type="password" 
+                            placeholder="Encryption Key"
+                            value={decryptionKey}
+                            onChange={(e) => setDecryptionKey(e.target.value)}
+                            disabled={isProcessing}
+                            required
+                        />
+                    </div>
                     
-                    <button type="submit">Decrypt File</button>
+                    <button type="submit" className={`main-decrypt-btn ${isProcessing ? 'loading' : ''}`} disabled={isProcessing}>
+                        {isProcessing ? (
+                            <><Loader2 className="spin" size={18} /> Processing...</>
+                        ) : (
+                            "Unlock & Download"
+                        )}
+                    </button>
                 </form>
             </div>
         </div>

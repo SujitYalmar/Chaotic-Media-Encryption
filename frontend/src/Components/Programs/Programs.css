@@ -1,60 +1,120 @@
-.programs{
-    margin: 80px auto;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    user-select: none;  
-    cursor: pointer;
-}
-.program img{
+/* Programs.css */
+
+.programs-section {
     width: 100%;
-    border-radius: 10px;
-    display: block;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    user-select: none;
+    padding: 80px 5%;
+    background: #020617; /* Unified deep dark background */
 }
-.program{
-    flex-basis: 31%;
-    position: relative;
-    margin-top: 5px;
-    margin-bottom: 25px;
-}
-.caption{
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 15, 152, 0.3);
+
+.programs-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    color: #fff;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.program-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
     cursor: pointer;
-    opacity: 0;
-    padding-top: 70%;
+    /* Force dark background for all cards */
+    background: #0f172a; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps cards square and uniform */
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* This ensures the white background of the image asset doesn't leak */
+    mix-blend-mode: luminosity; 
+    opacity: 0.8;
     transition: 0.4s;
 }
-.caption img{
-    width: 60px;
-    margin-bottom: 10px;
-}
-.program:hover .caption{
-    opacity: 1;
-    padding-top: 0;
-}
-/* -------- media query ----- */
 
-@media (max-width: 650px){
-    .programs{
-        flex-direction: column;
+.program-card:hover .main-img {
+    filter: brightness(0.3) blur(2px);
+    opacity: 1;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    border-color: #3b82f6;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}
+
+/* Caption Overlay (Unified Glassmorphism) */
+.caption-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: 0.4s;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.program-card:hover .caption-overlay {
+    opacity: 1;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.icon-box img {
+    width: 28px;
+}
+
+.caption-overlay p {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.caption-overlay small {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .program-card {
+        min-width: 100%;
     }
-    .program{
-        flex-basis: 100%;
-        margin: 20px;
+    .caption-overlay {
+        opacity: 1;
+        background: rgba(15, 23, 42, 0.4);
+        justify-content: flex-end;
     }
 }
